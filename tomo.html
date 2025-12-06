@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>내 계란토모와 결혼해!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Marry My EggTomo!<img src="image 8.png"></h1>
+
+        
+        <div class="main-content">
+            <!-- 다마고치 디바이스 -->
+            <div class="tamagotchi-device">
+                <div class="device-top">
+                    <div class="device-logo">eggtomo</div>
+                    <div class="device-antenna"></div>
+                </div>
+                
+                <div class="screen-container">
+                    <div class="screen">
+                        <div style="text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1.1em;">
+                            === 계란토모 등록 ===
+                        </div>
+                        
+                        <!-- 이미지 미리보기 영역 -->
+                        <div class="image-preview" id="imagePreview">
+                            <div class="preview-placeholder">
+                                <span style="font-size: 2em;">📷</span>
+                                <div style="font-size: 0.8em; margin-top: 5px;">캐릭터 이미지</div>
+                            </div>
+                            <img id="previewImg" style="display: none; width: 100%; height: 100%; object-fit: cover; border-radius: 8px;">
+                        </div>
+
+                        <!-- 이미지 업로드 버튼 -->
+                        <div class="form-group">
+                            <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                            <button class="screen-btn" onclick="document.getElementById('imageUpload').click()">
+                                🖼️ 이미지 업로드
+                            </button>
+                        </div>
+
+                        <!-- 이름 입력 -->
+                        <div class="form-group">
+                            <input type="text" class="screen-input" id="eggName" placeholder="계란토모 이름" maxlength="10">
+                        </div>
+
+                        <!-- 위치 입력 (자동완성) -->
+                        <div class="form-group" style="position: relative;">
+                            <input type="text" class="screen-input" id="location" placeholder="지하철역 (예: 서울역)" autocomplete="off">
+                            <div class="autocomplete-list" id="autocompleteList"></div>
+                        </div>
+
+                        <!-- 이메일 입력 -->
+                        <div class="form-group">
+                            <input type="email" class="screen-input" id="email" placeholder="이메일 주소">
+                        </div>
+
+                        <!-- 제출 버튼 -->
+                        <div class="form-group">
+                            <button class="screen-btn" id="submitBtn">
+                                ✅ 등록하기
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="button-area">
+                    <button class="button blue" title="먹이주기"></button>
+                    <button class="button orange" title="놀아주기"></button>
+                    <button class="button purple" title="청소하기"></button>
+                </div>
+            </div>
+
+
+            <!-- 찾기 카드 -->
+            <div class="find-cards">
+                <div class="card">
+                    <div class="card-header">
+                        eggtomo
+                        <div class="card-header-buttons">
+                            <div class="window-btn minimize"></div>
+                            <div class="window-btn maximize"></div>
+                            <div class="window-btn close"></div>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <div style="font-weight: bold; margin-bottom: 15px; font-size: 18px;">Find friends!</div>
+                        
+                        <!-- 게시글 목록 영역 -->
+                        <div id="postList" style="display: flex; flex-direction: column; gap: 15px; max-height: 400px; overflow-y: auto;">
+                            <div style="text-align: center; color: #999; padding: 40px 20px;">
+                                아직 등록된 계란토모가 없습니다.<br>
+                                위 디바이스에서 등록해주세요! 🐣
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        eggtomo
+                        <div class="card-header-buttons">
+                            <div class="window-btn minimize"></div>
+                            <div class="window-btn maximize"></div>
+                            <div class="window-btn close"></div>
+                        </div>
+                    </div>
+                    <div class="card-content" style="padding: 0; overflow: hidden;">
+                        <!-- 지도 영역 -->
+                        <div id="map" style="width: 100%; height: 450px;"></div>
+                    </div>
+                  
+                </div>
+                
+            </div>
+            <aside class="safety-box">
+              <div class="safety-header">
+                  <img src="/warning shield.png" alt="icon" class="safety-icon">
+                  <span class="safety-title">WARNING!</span>
+              </div>
+
+              <div class="safety-content">
+                  <p>
+                      사람이 많은 장소에서<br>
+                      낮에 거래를 권장합니다.<br>
+                    
+                  </p>
+              </div>
+          </aside>
+        </div>
+    </div>
+    <script src="script.js"></script>
+       
+</body>
+</html>
