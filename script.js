@@ -1,5 +1,5 @@
 
-        const KAKAO_KEY = import.meta.env.VITE_KAKAO_KEY;
+        const KAKAO_KEY = window.KAKAO_API_KEY;
 
       // ⭐ Kakao Maps SDK 동적 로드
       const script = document.createElement("script");
