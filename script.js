@@ -2,12 +2,15 @@
 
       // ⭐ Kakao Maps SDK 동적 로드
       const script = document.createElement("script");
-      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}`;
+      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false`;
       document.head.appendChild(script);
 
       script.onload = () => {
         console.log("Kakao SDK Loaded");
-        initMap();
+         kakao.maps.load(function () {
+         initMap();
+         renderPosts();
+        });
       };
         
         // 서울 4호선 지하철역 목록
@@ -332,9 +335,5 @@
             document.getElementById('email').value = '';
         }
 
-        // 페이지 로드 시 초기화
-        kakao.maps.load(function () {
-          initMap();
-          renderPosts();
-        });
+        
 
