@@ -1,17 +1,28 @@
-      const KAKAO_KEY = window.KAKAO_API_KEY;
+      // env에서 API키 불러오기
+      const KAKAO_KEY = import.meta.env.VITE_KAKAO_KEY;
+      
+      // 카카오맵 SDK 동적 로드
+      function loadKakaoMap(callback) {
+          const script = document.createElement("script");
+          script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${KAKAO_KEY}`;
+          script.onload = () => {
+              kakao.maps.load(callback);
+          };
+          document.head.appendChild(script);
+      }
 
-      // ⭐ Kakao Maps SDK 동적 로드
-      const script = document.createElement("script");
-      script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${KAKAO_KEY}&autoload=false`;
-      document.head.appendChild(script);
+      loadKakaoMap(() => {
+          const mapContainer = document.getElementById('map');
+          const options = {
+              center: new kakao.maps.LatLng(37.5665, 126.9780),
+              level: 6
+          };
+          const map = new kakao.maps.Map(mapContainer, options);
+      
+          window.map = map; // 전역 저장
+      });
 
-      script.onload = () => {
-        console.log("Kakao SDK Loaded");
-         kakao.maps.load(function () {
-         initMap();
-         renderPosts();
-        });
-      };
+
         
         // 서울 4호선 지하철역 목록
          const line4Stations = [
