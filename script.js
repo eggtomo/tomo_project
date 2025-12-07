@@ -1,5 +1,5 @@
       // env에서 API키 불러오기
-      const KAKAO_KEY = import.meta.env.VITE_KAKAO_KEY;
+      const KAKAO_KEY = window.KAKAO_API_KEY;
       
       // 카카오맵 SDK 동적 로드
       function loadKakaoMap(callback) {
