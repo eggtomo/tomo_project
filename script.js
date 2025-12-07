@@ -1,29 +1,4 @@
-      // env에서 API키 불러오기
-      const KAKAO_KEY = window.KAKAO_API_KEY;
-      
-      // 카카오맵 SDK 동적 로드
-      function loadKakaoMap(callback) {
-          const script = document.createElement("script");
-          script.src = `https://dapi.kakao.com/v2/maps/sdk.js?autoload=false&appkey=${KAKAO_KEY}`;
-          script.onload = () => {
-              kakao.maps.load(callback);
-          };
-          document.head.appendChild(script);
-      }
-
-      loadKakaoMap(() => {
-          const mapContainer = document.getElementById('map');
-          const options = {
-              center: new kakao.maps.LatLng(37.5665, 126.9780),
-              level: 6
-          };
-          const map = new kakao.maps.Map(mapContainer, options);
-      
-          window.map = map; // 전역 저장
-      });
-
-
-        
+   
         // 서울 4호선 지하철역 목록
          const line4Stations = [
             '당고개역', '상계역', '노원역', '창동역', '쌍문역', '수유역', '미아역', 
@@ -102,6 +77,15 @@
         let map = null;
         let markers = [];
         let circles = [];
+
+        window.onload = function() {
+          // 1. 카카오맵 로드 대기 후 실행
+            kakao.maps.load(function() {
+                initMap();      // 지도 생성
+                renderPosts();  // 게시글 표시
+                updateMap();    // 마커 표시
+            });
+        };
 
         // 이미지 업로드 미리보기
         document.getElementById('imageUpload').addEventListener('change', function(e) {
